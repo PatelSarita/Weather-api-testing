@@ -3,7 +3,7 @@ Feature: Weather API Testing with OpenWeatherMap
   Background:
     Given The base API URL is loaded from configuration
 
-  # ✅ Positive Scenarios
+  # Positive Scenarios
   Scenario: Get current weather for a valid city
     When I send a GET request to "/weather" with city "London"
     Then The response status code should be 200
@@ -24,7 +24,14 @@ Feature: Weather API Testing with OpenWeatherMap
     Then The response status code should be 200
     And The weather description should be in Spanish
 
-  # ❌ Negative Scenarios
+  Scenario: Validate additional weather fields
+    When I send a GET request to "/weather" with city "London"
+    Then The response status code should be 200
+    And The response should contain "pressure"
+    And The response should contain "humidity"
+    And The response should contain "wind"
+
+  # Negative Scenarios
   Scenario: Request without API key
     When I send a GET request to "/weather" with city "Paris" and no API key
     Then The response status code should be 401
@@ -39,10 +46,7 @@ Feature: Weather API Testing with OpenWeatherMap
     When I send a GET request to "/weather" with an empty city name
     Then The response status code should be 400
 
-  Scenario: Validate additional weather fields
-    When I send a GET request to "/weather" with city "London"
-    Then The response status code should be 200
-    And The response should contain "pressure"
-    And The response should contain "humidity"
-    And The response should contain "wind"
-
+  Scenario: Request weather with invalid coordinate values
+    Given The base API URL is loaded from configuration
+    When I send a GET request to "/weather" with longitude "abc" and latitude "xyz"
+    Then The response status code should be 400

@@ -123,5 +123,6 @@ public class WeatherApiSteps {
         System.out.println("Response Body: " + responseBody);
         Assert.assertTrue(fieldName,responseBody.contains(fieldName));
     }
+
 }
 

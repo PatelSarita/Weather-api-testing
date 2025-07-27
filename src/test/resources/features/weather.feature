@@ -39,4 +39,10 @@ Feature: Weather API Testing with OpenWeatherMap
     When I send a GET request to "/weather" with an empty city name
     Then The response status code should be 400
 
+  Scenario: Validate additional weather fields
+    When I send a GET request to "/weather" with city "London"
+    Then The response status code should be 200
+    And The response should contain "pressure"
+    And The response should contain "humidity"
+    And The response should contain "wind"
 

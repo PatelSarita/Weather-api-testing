@@ -101,7 +101,6 @@ public class WeatherApiSteps {
     @Then("The temperature unit should be in {string}")
     public void validateTemperatureUnit(String unit) {
         float temp = response.jsonPath().getFloat("main.temp");
-        // This just confirms temp is returned; advanced check needs unit conversion logic
         Assert.assertTrue(temp > -100 && temp < 100);
     }
 
@@ -118,6 +117,11 @@ public class WeatherApiSteps {
     }
 
 
-
+    @And("The response should contain {string}")
+    public void theResponseShouldContain(String fieldName) {
+        String responseBody = response.getBody().asString();
+        System.out.println("Response Body: " + responseBody);
+        Assert.assertTrue(fieldName,responseBody.contains(fieldName));
+    }
 }
 

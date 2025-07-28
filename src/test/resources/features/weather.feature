@@ -31,6 +31,7 @@ Feature: Weather API Testing with OpenWeatherMap
     And The response should contain "humidity"
     And The response should contain "wind"
 
+
   # Negative Scenarios
   Scenario: Request without API key
     When I send a GET request to "/weather" with city "Paris" and no API key

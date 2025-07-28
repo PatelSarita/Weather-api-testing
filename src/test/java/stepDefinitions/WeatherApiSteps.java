@@ -89,8 +89,6 @@ public class WeatherApiSteps {
     public void validateCoordinates(String expectedLon, String expectedLat) {
         int actualLon = response.jsonPath().getInt("coord.lon");
         int actualLat = response.jsonPath().getInt("coord.lat");
-//        String actualLat = response.jsonPath().getString("coord.lat");
-//        String actualLon = response.jsonPath().getString("coord.lon");
         int expectedLongitude = Integer.parseInt(expectedLon);
         int expectedLatitude = Integer.parseInt(expectedLat);
         Assert.assertEquals(expectedLatitude, actualLat);
@@ -107,7 +105,7 @@ public class WeatherApiSteps {
     @Then("The weather description should be in Spanish")
     public void validateLanguageResponse() {
         String description = response.jsonPath().getString("weather[0].description");
-        Assert.assertFalse(description.matches("[A-Za-z]+")); // crude check for non-English
+        Assert.assertFalse(description.matches("[A-Za-z]+"));
     }
 
     @Then("The error message should be {string}")

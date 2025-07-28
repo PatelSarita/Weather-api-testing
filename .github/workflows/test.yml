@@ -30,7 +30,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Run Maven Tests
-        run: mvn clean test
+        run: mvn clean verify
 
       - name: Upload Cucumber HTML Report
         uses: actions/upload-artifact@v4

@@ -64,20 +64,21 @@
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.7.0</version>
+                <version>5.0.0</version>
                 <executions>
                     <execution>
-                        <id>generate-cucumber-html-report</id>
+                        <id>execution</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Weather API Tests</projectName>
+                            <projectName>Cucumber HTML Reports</projectName>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
-                                <param>${project.build.directory}/cucumber.json</param>
+                                <param>**/cucumber*.json</param>
                             </jsonFiles>
-                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>

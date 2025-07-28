@@ -67,17 +67,16 @@
                 <version>5.0.0</version>
                 <executions>
                     <execution>
-                        <id>execution</id>
+                        <id>generate-cucumber-html-report</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Cucumber HTML Reports</projectName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
-                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <projectName>Weather API Test</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
                             <jsonFiles>
-                                <param>**/cucumber*.json</param>
+                                <param>${project.build.directory}/cucumber.json</param>
                             </jsonFiles>
                         </configuration>
                     </execution>

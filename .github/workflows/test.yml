@@ -29,6 +29,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: Create configuration.properties file
+        run: |
+          mkdir -p src/test/resources
+          echo "weather.api.key=${{ secrets.OPENWEATHER_API_KEY }}" > src/test/resources/configuration.properties
+
       - name: Run Maven Tests
         run: mvn clean verify
 

@@ -32,7 +32,7 @@ jobs:
       - name: Create configuration.properties file
         run: |
           mkdir -p src/test/resources
-          echo "weather.api.key=${{ secrets.OPENWEATHER_API_KEY }}" > src/test/resources/configuration.properties
+          cp configuration.properties src/test/resources/
 
       - name: Run Maven Tests
         run: mvn clean verify

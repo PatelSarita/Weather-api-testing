@@ -8,7 +8,6 @@ import utilities.ConfigurationReader;
 
 public class WeatherApiSteps {
 
-    private String endpoint;
     private Response response;
 
     @Given("The base API URL is loaded from configuration")
@@ -35,7 +34,6 @@ public class WeatherApiSteps {
         Assert.assertTrue(cityName.equalsIgnoreCase(city));
     }
 
-
     @When("I send a GET request to {string} with longitude {string} and latitude {string}")
     public void SendAGETRequestToWithLongitudeAndLatitude(String path, String lon, String lat) {
         response = RestAssured
@@ -45,7 +43,6 @@ public class WeatherApiSteps {
                 .queryParam("appid", ConfigurationReader.get("apiKey"))
                 .get(path);
     }
-
 
     @When("I send a GET request to {string} with city {string} and units {string}")
     public void sendGetWithUnits(String path, String city, String units) {
@@ -84,7 +81,6 @@ public class WeatherApiSteps {
                 .get(path);
     }
 
-
     @Then("The response should contain coordinates {string} and {string}")
     public void validateCoordinates(String expectedLon, String expectedLat) {
         int actualLon = response.jsonPath().getInt("coord.lon");
@@ -114,13 +110,11 @@ public class WeatherApiSteps {
         Assert.assertTrue(msg.toLowerCase().contains(message.toLowerCase()));
     }
 
-
     @And("The response should contain {string}")
     public void theResponseShouldContain(String fieldName) {
         String responseBody = response.getBody().asString();
         System.out.println("Response Body: " + responseBody);
         Assert.assertTrue(fieldName,responseBody.contains(fieldName));
     }
-
 }
 

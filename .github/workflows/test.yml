@@ -32,7 +32,7 @@ jobs:
       - name: Create configuration.properties in project root
         run: |
             echo "baseUrl=https://api.openweathermap.org/data/2.5" > configuration.properties
-            echo "weather.api.key=${{ secrets.API_KEY }}" >> configuration.properties
+            echo "weather.api.key=${{ secrets.APIKEY }}" >> configuration.properties
       
 
       - name: Debug config file

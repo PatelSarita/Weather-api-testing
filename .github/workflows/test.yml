@@ -29,15 +29,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Create configuration.properties in test resources
+      - name: Create configuration.properties in resources folder
         run: |
           mkdir -p src/test/resources
           echo "baseUrl=https://api.openweathermap.org/data/2.5" > src/test/resources/configuration.properties
-          echo "weather.api.key=${{ secrets.APIKEY }}" >> src/test/resources/configuration.properties 
+          echo "weather.api.key=${{ secrets.APIKEY }}" >> src/test/resources/configuration.properties
       
 
       - name: Debug config file
-        run: cat configuration.properties
+        run: cat src/test/resources/configuration.properties
+
 
       - name: Run Maven Tests
         run: mvn clean verify

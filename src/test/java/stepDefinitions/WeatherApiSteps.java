@@ -20,8 +20,9 @@ public class WeatherApiSteps {
         response = RestAssured
                 .given()
                 .queryParam("q", city)
-                .queryParam("appid", ConfigurationReader.get("APIKEY"))
+                .queryParam("appid", ConfigurationReader.get("weather.api.key."))
                 .get(path);
+
     }
 
     @Then("The response status code should be {int}")

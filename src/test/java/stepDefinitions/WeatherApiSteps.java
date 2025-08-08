@@ -20,7 +20,7 @@ public class WeatherApiSteps {
         response = RestAssured
                 .given()
                 .queryParam("q", city)
-                .queryParam("appid", ConfigurationReader.get("weather.api.key."))
+                .queryParam("appid", ConfigurationReader.get("APIKEY"))
                 .get(path);
 
     }

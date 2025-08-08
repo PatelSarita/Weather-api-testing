@@ -31,8 +31,8 @@ jobs:
 
       - name: Create configuration.properties in resources folder
         run: |
-          echo "baseUrl=https://api.openweathermap.org/data/2.5" > src/test/resources/configuration.properties
-          echo "weather.api.key=${{ secrets.APIKEY }}" >> src/test/resources/configuration.properties
+          echo "baseUrl=https://api.openweathermap.org/data/2.5" >> configuration.properties
+          echo "weather.api.key=${{ secrets.APIKEY }}" >> configuration.properties
           
 
       - name: Debug config file

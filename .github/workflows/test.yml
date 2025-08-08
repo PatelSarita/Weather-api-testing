@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir -p src/test/resources
           echo "baseUrl=https://api.openweathermap.org/data/2.5" > src/test/resources/configuration.properties
-          echo "APIKEY=${{ secrets.APIKEY }}" >> src/test/resources/configuration.properties
+          echo "apiKey=${{ secrets.APIKEY }}" >> src/test/resources/configuration.properties
 
       - name: Debug config file
         run: cat src/test/resources/configuration.properties

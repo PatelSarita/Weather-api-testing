@@ -31,15 +31,9 @@ jobs:
 
       - name: Create configuration.properties in resources folder
         run: |
-          mkdir -p src/test/resources
           echo "baseUrl=https://api.openweathermap.org/data/2.5" > src/test/resources/configuration.properties
           echo "weather.api.key=${{ secrets.APIKEY }}" >> src/test/resources/configuration.properties
           
-
-      - name: Replace API key in configuration.properties
-        run: |
-          sed -i "s|^weather.api.key=.*|weather.api.key=${{ secrets.APIKEY }}|" src/test/resources/configuration.properties
-      
 
       - name: Debug config file
         run: cat src/test/resources/configuration.properties

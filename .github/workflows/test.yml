@@ -34,9 +34,9 @@ jobs:
           echo "baseUrl=https://api.openweathermap.org/data/2.5" > src/test/resources/configuration.properties
           echo "APIKEY=${{ secrets.APIKEY }}" >> src/test/resources/configuration.properties
 
-
       - name: Debug config file
-        run: cat configuration.properties
+        run: cat src/test/resources/configuration.properties
+
 
       - name: Run Maven Tests
         run: mvn clean verify

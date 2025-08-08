@@ -20,15 +20,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Create configuration.properties in resources folder
-        run: |
-          echo "baseUrl=https://api.openweathermap.org/data/2.5" >> configuration.properties
-          echo "weather.api.key=${{ secrets.APIKEY }}" >> configuration.properties
-
-
-      - name: Debug config file
-        run: cat configuration.properties
-
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
@@ -37,6 +28,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: Create configuration.properties in resources folder
+        run: |
+          echo "baseUrl=https://api.openweathermap.org/data/2.5" > configuration.properties
+          echo "weather.api.key=${{ secrets.APIKEY }}" >> configuration.properties
+
+      - name: Debug config file
+        run: cat configuration.properties
 
       - name: Run Maven Tests
         run: mvn clean verify

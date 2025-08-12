@@ -41,7 +41,7 @@ public class WeatherApiSteps {
                 .given()
                 .queryParam("lon", lon)
                 .queryParam("lat", lat)
-                .queryParam("appid", ConfigurationReader.get("APIKEY"))
+                .queryParam("appid", ConfigurationReader.get("apiKey"))
                 .get(path);
     }
 
@@ -51,7 +51,7 @@ public class WeatherApiSteps {
                 .given()
                 .queryParam("q", city)
                 .queryParam("units", units)
-                .queryParam("appid", ConfigurationReader.get("APIKEY"))
+                .queryParam("appid", ConfigurationReader.get("apiKey"))
                 .get(path);
     }
 
@@ -61,7 +61,7 @@ public class WeatherApiSteps {
                 .given()
                 .queryParam("q", city)
                 .queryParam("lang", lang)
-                .queryParam("appid",ConfigurationReader.get("APIKEY"))
+                .queryParam("appid",ConfigurationReader.get("apiKey"))
                 .get(path);
     }
 
@@ -78,7 +78,7 @@ public class WeatherApiSteps {
         response = RestAssured
                 .given()
                 .queryParam("q", "")
-                .queryParam("appid", ConfigurationReader.get("APIKEY"))
+                .queryParam("appid", ConfigurationReader.get("apiKey"))
                 .get(path);
     }
 

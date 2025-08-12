@@ -1,3 +1,0 @@
-stepDefinitions\WeatherApiSteps.class
-utilities\ConfigurationReader.class
-runners\CukesRunner.class
